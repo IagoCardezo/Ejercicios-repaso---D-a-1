@@ -12,8 +12,12 @@
 // function isRepeat(arr) {
 //   for (let i = 0; i <= arr.length; i++) {
 //     for (let j = 0; j <= arr.length; j++) {
+
+// // Recorremos el array dos veces usando un bucle for para poder comaparar dos posiciones distintas al mismo tiempo.
+
 //       if (arr[i] === arr[j] && i !== j) {
 //         return true;
+//// Si un valor en los dos bucles coincide, siendo su índice diferente , se trata de un valor repedido .
 //       }
 //     }
 //   }
@@ -47,17 +51,20 @@
 // function oneRepeated(arr) {
 //   let howManyOnes = 0;
 //   let biggestAmount = 0;
+//// Establecemos dos variables , una vá a actuar como contador de '1s' y la otra como contador de la mayor cantidad de '1s' consecutivos.
 
+//// Recorremos el array con un bucle for, por cada vez que el valor sea un '1', incrementamos el valor de 'howManyOnes'.
 //   for (let i = 0; i < arr.length; i++) {
 //     if (arr[i] === 1) {
 //       howManyOnes++;
 
 //       // Ésto é necesário para que non me reinicie tamén biggestAmount
+//// De esta forma biggest amount registra la mayor cantidad de '1s' consecutiva.
 //       if (howManyOnes > biggestAmount) {
 //         biggestAmount = howManyOnes;
 //       }
 //     }
-
+//// Así evitamos que 'howmanyones' siga aumentando si en algún momento el valor del array deja de ser 1.
 //     if (arr[i] !== 1) {
 //       howManyOnes = 0;
 //     }
@@ -72,26 +79,26 @@
 //  de 1s mais grande.
 // ###########################################################################################################################################################
 
-//Ejercicio 3 :
+// Ejercicio 3 :
 
-// let arr = [1, 0, 0, 1, 0, 1, 0, 0, 3, 0, 0, 12];
+let arr = [1, 0, 0, 1, 0, 1, 0, 0, 3, 0, 0, 12];
 
-// function manageZeros(arr) {
-//   for (let i = 0; i <= arr.length; i++) {
-//     if (arr[i] === arr[i + 1] && arr[i] === 0) {
-//       arr.splice(i, 1);
-//       arr.push(0);
-//     }
+function manageZeros(arr) {
+  for (let i = 0; i <= arr.length; i++) {
+    if (arr[i] === arr[i + 1] && arr[i] === 0) {
+      arr.splice(i, 1);
+      arr.push(0);
+    }
 
-//     if (arr[i] === 0) {
-//       arr.splice(i, 1);
-//       arr.push(0);
-//     }
-//   }
-//   return arr;
-// }
+    if (arr[i] === 0) {
+      arr.splice(i, 1);
+      arr.push(0);
+    }
+  }
+  return arr;
+}
 
-// console.log(manageZeros(arr));
+console.log(manageZeros(arr));
 
 //#######################################################################################################################################################
 // ####### Ejercicios de Repaso(para casa) :  ###########################################################################################################
@@ -249,7 +256,37 @@
 // nums.forEach(function(value) {
 //   console.log(value);
 // });
+// 2##########################################################
 
+//Ordenar de menor a Mayor sin usar sort.
+
+// function menorAMayor(nums)
+
+// function order(nums) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = 0; j < nums.length; j++) {
+//       if (nums[i] < nums[j]) {
+//         const temp = nums[j];
+//         nums[j] = nums[i];
+//         nums[i] = temp;
+//       }
+//     }
+//     console.log(nums);
+//   }
+//   return nums;
+// }
+
+// order(nums);
+
+//Ordenado de mayor a menor usando Sort
+// function mayorAMenor(nums) {
+//   nums.sort(function(a, b) {
+//     return b - a;
+//   });
+//   return nums;
+// }
+
+// console.log(mayorAMenor(nums));
 /**
  * ###################################
  * ###### E J E R C I C I O   4 ######
@@ -262,18 +299,18 @@
  *
  */
 
-let numOne = prompt("Give me a number", 0);
-let numTwo = prompt("Give me another number", 0);
+// let numOne = prompt("Give me a number", 0);
+// let numTwo = prompt("Give me another number", 0);
 
-let resta = (numOne, numTwo) => {
-  let solution = numOne - numTwo;
-  if (solution < 0) {
-    solution = -solution;
-  }
-  return solution;
-};
+// let resta = (numOne, numTwo) => {
+//   let solution = numOne - numTwo;
+//   if (solution < 0) {
+//     solution = -solution;
+//   }
+//   return solution;
+// };
 
-alert(resta(numOne, numTwo));
+// alert(resta(numOne, numTwo));
 //#######################################################################################################################################################
 // ####### Ejercicios Complementarios :  ################################################################################################################
 //#######################################################################################################################################################
@@ -340,3 +377,56 @@ alert(resta(numOne, numTwo));
 // }
 
 // console.log(sayIfRepeated(arr));
+
+//###################################################################################3
+// Ejercicios Resueltos en clase
+//###################################################################################3
+
+// let Sara = [89, 120, 103];
+// let Laura = [116, 94, 123];
+
+// const makeMedia = arr => {
+//   const puntosTotales = arr.reduce((acumulator, currentValue) => {
+//     return acumulator + currentValue;
+//   });
+//   return puntosTotales / arr.length;
+// };
+
+// Sara = makeMedia(Sara);
+// Laura = makeMedia(Laura);
+
+// if (Sara > Laura) {
+//   console.log(`El equipo de Sara tienen una media de ${Sara}, y el de Laura tiene una media de ${Laura}.
+//     Por tanto el equipo de Sara el el ganador`);
+// } else {
+//   console.log(`El equipo de Sara tienen una media de ${Sara}, y el de Laura tiene una media de ${Laura}.
+//     Por tanto el equipo de Laura el el ganador`);
+// }
+
+//###################################################################################
+// Ejercicio 2
+
+// const totalFacturas = [124, 58, 268];
+// const propinas = [];
+// const totalDeTotales = [];
+
+// for (const factura of totalFacturas) {
+//   if (factura < 50) {
+//     propinas.push((20 / 100) * factura);
+//   } else if (factura >= 50 && factura <= 200) {
+//     propinas.push((15 / 100) * factura);
+//   } else {
+//     propinas.push((10 / 100) * factura);
+//   }
+// }
+
+// console.log(propinas);
+
+// propinas.map((value, index) => {
+//   const total = value + totalFacturas[index];
+//   totalDeTotales.push(total);
+// });
+
+// console.log(totalDeTotales);
+
+//###################################################################################
